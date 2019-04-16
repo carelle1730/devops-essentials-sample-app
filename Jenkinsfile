@@ -13,7 +13,7 @@ pipeline {
                 branch 'master'
             }
             steps {
-                withCredentials([string(credentialsId: 'jenkinsuser', variable: 'USERPASS')]) {
+                withCredentials([string(credentialsId: 'jenkinsuser', variable: 'Passw0rd123!')]) {
                     sshPublisher(
                         failOnError: true,
                         publishers: [
@@ -21,7 +21,7 @@ pipeline {
                                 configName: 'staging',
                                 sshCredentials: [
                                     username: 'jenkinsuser',
-                                    encryptedPassphrase: "$USERPASS"
+                                    encryptedPassphrase: "Passw0rd123!"
                                 ], 
                                 transfers: [
                                     sshTransfer(
@@ -42,7 +42,7 @@ pipeline {
             steps {
                 input 'Does the staging environment look OK?'
                 milestone(1)
-                withCredentials([string(credentialsId: 'jenkinsuser', variable: 'USERPASS')]) {
+                withCredentials([string(credentialsId: 'jenkinsuser', variable: 'Passw0rd123!')]) {
                     sshPublisher(
                         failOnError: true,
                         publishers: [
@@ -50,7 +50,7 @@ pipeline {
                                 configName: 'production',
                                 sshCredentials: [
                                     username: 'jenkinsuser',
-                                    encryptedPassphrase: "$USERPASS"
+                                    encryptedPassphrase: "Passw0rd123!"
                                 ], 
                                 transfers: [
                                     sshTransfer(
